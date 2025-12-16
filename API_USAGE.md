@@ -16,8 +16,8 @@ import { coreSDK } from 'game-sdk';
 await coreSDK.init({
   app: 'my-game',
   version: '1.0.0',
-  baseUrl: 'http://localhost:3000',      // Configs service URL
-  authUrl: 'http://localhost:3001',       // Auth service URL (optional)
+  baseUrl: 'http://localhost/v1',      // Configs service URL
+  authUrl: 'http://localhost/v1',       // Auth service URL (optional)
   sentryDsn: 'your-sentry-dsn',           // optional
   skipAuth: false                          // Skip guest authentication (default: false)
 });
@@ -29,8 +29,8 @@ await coreSDK.init({
 |--------|------|----------|-------------|
 | `app` | string | No | Application name |
 | `version` | string | No | Application version |
-| `baseUrl` | string | No | Base URL for configs/API service |
-| `authUrl` | string | No | Auth service URL (separate from baseUrl) |
+| `baseUrl` | string | No | Base API URL (must include /v1) |
+| `authUrl` | string | No | Auth API URL (must include /v1) |
 | `sentryDsn` | string | No | Sentry DSN for error tracking |
 | `skipAuth` | boolean | No | Skip guest authentication during init |
 
@@ -379,8 +379,8 @@ For endpoints not covered by specialized clients, use the base API client:
 
 ```typescript
 // Access the base API client
-const response = await coreSDK.api.get('/v1/custom/endpoint');
-const data = await coreSDK.api.post('/v1/custom/endpoint', { data: 'value' });
+const response = await coreSDK.api.get('/custom/endpoint');
+const data = await coreSDK.api.post('/custom/endpoint', { data: 'value' });
 ```
 
 ## Event Bus
@@ -424,8 +424,8 @@ async function main() {
   await coreSDK.init({
     app: 'my-game',
     version: '1.0.0',
-    baseUrl: 'http://localhost:3000',
-    authUrl: 'http://localhost:3001',
+    baseUrl: 'http://localhost/v1',
+    authUrl: 'http://localhost/v1',
     skipAuth: true  // We'll handle auth manually
   });
 
@@ -504,11 +504,11 @@ For script tag inclusion:
 ```html
 <script src="/game-sdk.umd.js"></script>
 <script>
-  const sdk = window.coreSDK.coreSDK;
+  const sdk = window.coreSDK;
   sdk.init({
     app: 'my-game',
     version: '1.0.0',
-    baseUrl: 'http://localhost:3000'
+    baseUrl: 'http://localhost/v1'
   }).then(() => {
     console.log('SDK ready');
   });
