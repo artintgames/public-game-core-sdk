@@ -23,6 +23,17 @@ console.log('SDK:', sdk);
 
 ---
 
+## Init
+
+```
+await coreSDK.init({
+  baseUrl: 'https://configs.artintgames.com',
+  authUrl: 'https://auth.artintgames.com',
+  app: 'my-game',
+  version: '1.0.17'
+}); 
+```
+
 ## Authentication
 
 ### Guest Login
