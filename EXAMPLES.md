@@ -325,43 +325,6 @@ console.log('Events:', events);
 
 ---
 
-## Event Bus
-
-### Subscribe to Events
-
-```javascript
-// Listen for SDK events
-sdk.on('core:initialized', (params) => {
-  console.log('SDK initialized:', params);
-});
-
-sdk.on('core:authWindowOpen', () => {
-  console.log('Auth window opened');
-});
-
-sdk.on('core:authWindowClose', () => {
-  console.log('Auth window closed');
-});
-```
-
-### Emit Custom Event
-
-```javascript
-// Emit your own event
-sdk.emit('game:level_complete', { level: 5, score: 1500 });
-```
-
-### One-time Listener
-
-```javascript
-// Listen only once
-sdk.once('game:level_complete', (data) => {
-  console.log('Level completed:', data);
-});
-```
-
----
-
 ## Complete Test Flow
 
 ```javascript
