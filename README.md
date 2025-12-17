@@ -175,11 +175,6 @@ await coreSDK.kv.set(key, value)
 await coreSDK.kv.delete(key)
 ```
 
-### Events (`coreSDK.events`)
-```javascript
-await coreSDK.events.getAll()
-await coreSDK.events.send({ name, data, timestamp })
-```
 
 ### Profile (`coreSDK.profile`)
 ```javascript
