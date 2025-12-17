@@ -78,10 +78,26 @@ npm --version
 
 ---
 
-## Step 2: Start the Server
+## Step 2: Download the Repository
+
+**Option 1: Git clone**
+```bash
+git clone https://github.com/ArtIntGames/public-game-core-sdk.git
+cd public-game-core-sdk
+```
+
+**Option 2: Download ZIP**
+
+1. Go to [github.com/ArtIntGames/public-game-core-sdk](https://github.com/ArtIntGames/public-game-core-sdk)
+2. Click **Code** → **Download ZIP**
+3. Extract the archive
+4. Open terminal in the extracted folder
+
+---
+
+## Step 3: Start the Server
 
 ```bash
-cd /path/to/public-game-core-sdk
 node server.js
 ```
 
@@ -93,7 +109,7 @@ Open http://localhost:3333/Demo.html
 
 ---
 
-## Step 3: Open Demo
+## Step 4: Open Demo
 
 Open in your browser:
 
@@ -117,18 +133,3 @@ Press `Ctrl + C` in the terminal.
 
 ---
 
-## Alternative Methods
-
-**Python 3:**
-```bash
-python3 -m http.server 3333
-```
-
-**npx (no setup):**
-```bash
-npx serve -p 3333
-```
-
----
-
-**Last Updated**: December 2025
