@@ -152,13 +152,19 @@ export const SDKProvider = ({ children }) => {
     const initSDK = async () => {
       try {
         setLoading(true);
-        await coreSDK.init({
-          app: 'ai-games-platform',
-          version: '1.0.0',
-          baseUrl: process.env.REACT_APP_BACKEND_URL || 'https://configs.artintgames.com',
-          authUrl: process.env.REACT_APP_BACKEND_URL_AUTH || ' https://auth.artintgames.com',
-          skipAuth: true // Skip guest auth - we handle auth manually
-        });
+        await coreSDK.init(
+          {
+            app: 'ai-games-platform',
+            version: '1.0.0',
+            baseUrl: process.env.REACT_APP_BACKEND_URL || 'https://configs.artintgames.com',
+            authUrl: process.env.REACT_APP_BACKEND_URL_AUTH || 'https://auth.artintgames.com',
+            skipAuth: true // Skip guest auth - we handle auth manually
+          },
+          () => {
+            // Called when auth is ready (token restored or after login)
+            console.log('Auth ready!');
+          }
+        );
 
         setIsInitialized(true);
         console.log('SDK initialized successfully');

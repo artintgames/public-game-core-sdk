@@ -25,13 +25,20 @@ console.log('SDK:', sdk);
 
 ## Init
 
-```
-await coreSDK.init({
-  baseUrl: 'https://configs.artintgames.com',
-  authUrl: 'https://auth.artintgames.com',
-  app: 'my-game',
-  version: '1.0.17'
-}); 
+```javascript
+// Initialize with onAuthReady callback
+await coreSDK.init(
+  {
+    baseUrl: 'https://configs.artintgames.com',
+    authUrl: 'https://auth.artintgames.com',
+    app: 'my-game',
+    version: '1.0.17'
+  },
+  () => {
+    // Called when auth is ready
+    console.log('Auth ready! Start game...');
+  }
+);
 ```
 
 ## Authentication

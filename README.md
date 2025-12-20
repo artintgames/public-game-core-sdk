@@ -79,13 +79,19 @@ npm install ../game-core-sdk
 ```javascript
 import { coreSDK } from "game-sdk";
 
-// Initialize SDK
-await coreSDK.init({
-  baseUrl: "https://configs.artintgames.com",    // Main API server
-  authUrl: " https://auth.artintgames.com",    // Auth service (users, profile, auth)
-  app: "my-game",
-  version: "1.0.0"
-});
+// Initialize SDK with onAuthReady callback
+await coreSDK.init(
+  {
+    baseUrl: "https://configs.artintgames.com",    // Main API server
+    authUrl: "https://auth.artintgames.com",       // Auth service (users, profile, auth)
+    app: "my-game",
+    version: "1.0.0"
+  },
+  () => {
+    // Called when auth is ready (token restored or after login)
+    console.log("Auth ready! Start game...");
+  }
+);
 
 // Use API clients
 const config = await coreSDK.configs.init({

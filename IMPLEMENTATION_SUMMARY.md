@@ -117,11 +117,19 @@ game-core-sdk/
 ```typescript
 import { coreSDK } from 'game-sdk';
 
-await coreSDK.init({
-  app: 'my-game',
-  version: '1.0.0',
-  baseUrl: 'https://configs.artintgames.com'
-});
+// Initialize with onAuthReady callback
+await coreSDK.init(
+  {
+    app: 'my-game',
+    version: '1.0.0',
+    baseUrl: 'https://configs.artintgames.com',
+    authUrl: 'https://auth.artintgames.com'
+  },
+  () => {
+    // Called when auth is ready
+    console.log('Auth ready! Start game...');
+  }
+);
 ```
 
 ### Use API Clients

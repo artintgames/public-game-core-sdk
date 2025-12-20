@@ -13,14 +13,21 @@ npm install game-sdk
 ```typescript
 import { coreSDK } from 'game-sdk';
 
-await coreSDK.init({
-  app: 'my-game',
-  version: '1.0.0',
-  baseUrl: 'https://configs.artintgames.com',      // Configs service URL
-  authUrl: ' https://auth.artintgames.com',       // Auth service URL (optional)
-  sentryDsn: 'your-sentry-dsn',           // optional
-  skipAuth: false                          // Skip guest authentication (default: false)
-});
+// Initialize with onAuthReady callback
+await coreSDK.init(
+  {
+    app: 'my-game',
+    version: '1.0.0',
+    baseUrl: 'https://configs.artintgames.com',     // Configs service URL
+    authUrl: 'https://auth.artintgames.com',        // Auth service URL (optional)
+    sentryDsn: 'your-sentry-dsn',                   // optional
+    skipAuth: false                                  // Skip guest authentication (default: false)
+  },
+  () => {
+    // Called when auth is ready (token restored or after login)
+    console.log('Auth ready! Start game...');
+  }
+);
 ```
 
 ### Initialization Options
